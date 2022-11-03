@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { NavigationError, Router } from '@angular/router';
+
 import { catchError, Subject, takeUntil, tap } from 'rxjs';
+
 import { AuthService } from 'src/app/core/services/auth.service';
 import { SnackbarService } from 'src/app/core/services/snackbar.service';
 import { RegexpHelper } from 'src/app/shared/helpers/regexp.helpers';

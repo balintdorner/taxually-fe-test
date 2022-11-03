@@ -11,21 +11,18 @@ import { MatTableDataSource } from '@angular/material/table';
 export class MaterialTableComponent implements OnInit {
   @Input() items?: Array<any>;
   @Input() displayedColumns?: Array<string>;
-  datasource = new MatTableDataSource();
-
   @ViewChild(MatPaginator) paginator?: MatPaginator;
   @ViewChild(MatSort) sort?: MatSort;
-
   @Output() readonly delete: EventEmitter<any> = new EventEmitter<any>();
+  datasource = new MatTableDataSource();
 
-  constructor(
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.setDataSource(this.items);
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.setSort();
     this.setPagination();
   }
@@ -42,13 +39,13 @@ export class MaterialTableComponent implements OnInit {
     this.datasource.data = data;
   }
 
-  private setSort() {
+  private setSort(): void {
     if (this.sort) {
       this.datasource.sort = this.sort;
     }
   }
 
-  private setPagination() {
+  private setPagination(): void {
     if (this.paginator) {
       this.datasource.paginator = this.paginator;
     }

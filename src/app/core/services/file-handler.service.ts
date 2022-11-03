@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -12,7 +13,7 @@ export class FileHandlerService {
     this.files.next([...this.files.getValue(), file]);
   }
 
-  delete(item: any): void {
-    this.files.next(this.files.getValue().filter(x => x.name !== item.name))
+  delete(file: File): void {
+    this.files.next(this.files.getValue().filter(x => x.name !== file.name))
   }
 }

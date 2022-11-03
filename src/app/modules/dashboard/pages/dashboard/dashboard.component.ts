@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+
 import { AuthService } from 'src/app/core/services/auth.service';
 import { FileHandlerService } from 'src/app/core/services/file-handler.service';
 import { SnackbarService } from 'src/app/core/services/snackbar.service';
@@ -32,13 +33,13 @@ export class DashboardComponent implements OnInit {
     this._auth.logout();
   }
 
-  onUpload(file: File) {
+  onUpload(file: File): void {
     this._fileHandler.upload(file);
     this._snackbar.handle200status();
     this.updateTable();
   }
 
-  onDelete(item: File) {
+  onDelete(item: File): void {
     const dialog: MatDialogRef<ConfirmDeletePopupComponent> = this.openDialog(item);
 
     dialog

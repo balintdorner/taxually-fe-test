@@ -12,12 +12,11 @@ export class FileUploadComponent {
 
   constructor() { }
 
-  onFileSelect(event: any) {
+  onFileSelect(event: any): void {
     this.file = event.target.files[0];
   }
 
-  onUpload() {
+  onUpload(): void {
     this.upload.emit(this.file);
   }
-
 }

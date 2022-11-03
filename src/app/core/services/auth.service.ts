@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NavigationError, Router } from '@angular/router';
+
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 
 import { UserModel } from 'src/app/shared/models/user.model';
@@ -25,12 +26,12 @@ export class AuthService {
   login(loginCredentials: UserModel): Observable<UserModel> {
     const user: UserModel | null = this.readFromLocalStorage(this.registeredUserLocalStorageKey);
     if (user == null) {
-      const err = new Error('User not found'); 
+      const err = new Error('User not found');
       return throwError(() => err);
     }
 
     if (this.matchPassword(loginCredentials, user)) {
-      const err = new Error('Invalid credentials'); 
+      const err = new Error('Invalid credentials');
       return throwError(() => err);
     }
 
@@ -80,7 +81,7 @@ export class AuthService {
 
   private matchPassword(loginCredentials: UserModel, user: UserModel): boolean {
     return (loginCredentials.password !== user.password ||
-    loginCredentials.email !== user.email)
+      loginCredentials.email !== user.email)
   }
 
   private finishLogin(user: UserModel): UserModel {
