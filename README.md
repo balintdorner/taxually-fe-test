@@ -1,3 +1,6 @@
+# Planning
+[Planning](https://github.com/balintdorner/taxually-fe-test/blob/main/plan.png?raw=true)
+
 # Frontend Technical Test
 
 This document defines a coding test focused on frontend tech skills
