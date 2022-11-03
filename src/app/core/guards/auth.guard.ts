@@ -25,7 +25,7 @@ export class AuthGuard implements CanLoad {
   }
 
   private navigateToLogin(): void {
-    this._router.navigate(['/auth/login'])
+    this._router.navigate(['/auth/registration'])
       .catch((e: any) => console.error(e));
   }
 }

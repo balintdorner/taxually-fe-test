@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { FileHandlerService } from 'src/app/core/services/file-handler.service';
+import { SnackbarService } from 'src/app/core/services/snackbar.service';
 import { ConfirmDeletePopupComponent } from 'src/app/shared/components/confirm-delete-popup/confirm-delete-popup.component';
 import { MaterialTableComponent } from 'src/app/shared/components/material-table/material-table.component';
 
@@ -20,7 +21,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private readonly _fileHandler: FileHandlerService,
-    private readonly _auth: AuthService
+    private readonly _auth: AuthService,
+    private readonly _snackbar: SnackbarService
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +34,7 @@ export class DashboardComponent implements OnInit {
 
   onUpload(file: File) {
     this._fileHandler.upload(file);
+    this._snackbar.handle200status();
     this.updateTable();
   }
 
@@ -43,6 +46,7 @@ export class DashboardComponent implements OnInit {
       .subscribe(result => {
         if (result) {
           this._fileHandler.delete(item);
+          this._snackbar.handle200status();
           this.updateTable();
         }
       });

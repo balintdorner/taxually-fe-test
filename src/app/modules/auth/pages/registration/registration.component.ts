@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NavigationError, Router } from '@angular/router';
 
 import { AuthService } from 'src/app/core/services/auth.service';
+import { SnackbarService } from 'src/app/core/services/snackbar.service';
 import { CustomValidators } from 'src/app/shared/custom-validators/custom.validators';
 import { RegexpHelper } from 'src/app/shared/helpers/regexp.helpers';
 import { AuthBaseComponent } from '../../components/auth-base.component';
@@ -14,7 +16,10 @@ import { AuthBaseComponent } from '../../components/auth-base.component';
 export class RegistrationComponent extends AuthBaseComponent implements OnInit {
   constructor(
     private readonly _fb: FormBuilder,
-    private readonly _auth: AuthService
+    private readonly _auth: AuthService,
+    private readonly _router: Router,
+    private readonly _snackbar: SnackbarService
+
   ) {
     super();
   }
@@ -35,5 +40,16 @@ export class RegistrationComponent extends AuthBaseComponent implements OnInit {
 
   onSubmit(): void {
     this._auth.register(this.form.value);
+    this._snackbar.handle200status();
+    this.navigateToLogin();
+  }
+
+  onAlreadyRegisteredClick(): void {
+    this.navigateToLogin();
+  }
+
+  navigateToLogin(): void {
+    this._router.navigate(['auth/login'])
+      .catch((e: NavigationError) => console.error(e));
   }
 }

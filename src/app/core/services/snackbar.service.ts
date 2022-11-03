@@ -12,7 +12,7 @@ export class SnackbarService {
   ) { }
 
   handle200status(): void {
-    this._snackBar.open('Done', 'Close', {duration: 5000});
+    this._snackBar.open('Successful', 'Close', {duration: 5000});
   }
 
   handleError(error: string): void {
