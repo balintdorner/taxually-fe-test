@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { catchError, pipe, Subject, takeUntil } from 'rxjs';
+import { catchError, pipe, Subject, takeUntil, tap } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { SnackbarService } from 'src/app/core/services/snackbar.service';
 import { RegexpHelper } from 'src/app/shared/helpers/regexp.helpers';
 import { AuthBaseComponent } from '../../components/auth-base.component';
 
@@ -15,7 +16,8 @@ export class LoginComponent extends AuthBaseComponent implements OnInit, OnDestr
 
   constructor(
     private readonly _fb: FormBuilder,
-    private readonly _auth: AuthService
+    private readonly _auth: AuthService,
+    private readonly _snackbar: SnackbarService
   ) {
     super();
   }
@@ -36,8 +38,10 @@ export class LoginComponent extends AuthBaseComponent implements OnInit, OnDestr
       .pipe(
         takeUntil(this.unSubscribe),
         catchError(err => {
+          this._snackbar.handleError(err);
           throw 'Details: ' + err;
-        })
+        }),
+        tap(() => this._snackbar.handle200status())
       )
       .subscribe();
   }
