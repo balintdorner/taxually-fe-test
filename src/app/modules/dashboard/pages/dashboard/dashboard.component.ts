@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FileHandlerService } from 'src/app/core/services/file-handler.service';
+import { ConfirmDeletePopupComponent } from 'src/app/shared/components/confirm-delete-popup/confirm-delete-popup.component';
 import { MaterialTableComponent } from 'src/app/shared/components/material-table/material-table.component';
 
 @Component({
@@ -15,6 +17,7 @@ export class DashboardComponent implements OnInit {
 
 
   constructor(
+    public dialog: MatDialog,
     private readonly _fileHandler: FileHandlerService
   ) { }
 
@@ -27,12 +30,29 @@ export class DashboardComponent implements OnInit {
   }
 
   onDelete(item: File) {
-    this._fileHandler.delete(item);
-    this.updateTable();
+    const dialog: MatDialogRef<ConfirmDeletePopupComponent> = this.openDialog(item);
+
+    dialog
+      .afterClosed()
+      .subscribe(result => {
+        if (result) {
+          this._fileHandler.delete(item);
+          this.updateTable();
+        }
+      });
+  }
+
+  private openDialog(file: File): MatDialogRef<ConfirmDeletePopupComponent> {
+    const dialog = this.dialog.open(ConfirmDeletePopupComponent, {
+      width: '500px',
+      data: file,
+    });
+
+    return dialog;
   }
 
   private updateTable(): void {
-    if(this.table) {
+    if (this.table) {
       this.table.update(this._fileHandler.files.value)
     }
   }
