@@ -1,0 +1,35 @@
+<div class="container text-center">
+    <div class="row">
+        <div class="col">
+            <p class="h1 text-center">LOGIN</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-sm-0 col-sm-12 offset-md-4 col-md-4">
+            <form [formGroup]="form">
+                
+
+                <mat-form-field>
+                    <input matInput
+                        type="email"
+                        formControlName="email"
+                        placeholder="Email"
+                        required>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput
+                        type="password"
+                        formControlName="password"
+                        placeholder="Password"
+                        required>
+                    <mat-error *ngIf="passwordPatternError">{{passwordPatternErrorMessage}}</mat-error>
+                </mat-form-field>
+
+                <button mat-raised-button
+                    [disabled]="!form.valid"
+                    (click)="onSubmit()">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
