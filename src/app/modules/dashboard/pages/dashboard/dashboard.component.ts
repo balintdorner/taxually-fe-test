@@ -16,4 +16,8 @@ export class DashboardComponent implements OnInit {
     console.log(file);
   }
 
+  onDelete(item: any) {
+    console.log(item);
+  }
+
 }
