@@ -10,8 +10,8 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class MaterialTableComponent implements OnInit {
   @Input() items?: Array<any>;
+  @Input() displayedColumns?: Array<string>;
   datasource = new MatTableDataSource();
-  displayedColumns?: Array<string>;
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
   @ViewChild(MatSort) sort?: MatSort;
@@ -22,7 +22,6 @@ export class MaterialTableComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getColumns();
     this.setDataSource(this.items);
   }
 
@@ -35,11 +34,8 @@ export class MaterialTableComponent implements OnInit {
     this.delete.emit(item);
   }
 
-  private getColumns(): void {
-    if(!this.items || this.items?.length < 1) {
-      throw new Error('Invalid data');
-    }
-    this.displayedColumns = Object.keys(this.items[0]);
+  update(items: Array<any>): void {
+    this.setDataSource(items);
   }
 
   private setDataSource(data: any) {

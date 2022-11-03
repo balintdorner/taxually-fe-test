@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FileHandlerService } from 'src/app/core/services/file-handler.service';
+import { MaterialTableComponent } from 'src/app/shared/components/material-table/material-table.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,18 +8,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  dataSource = this._fileHandler.files.value;
+  columns = ['name', 'lastModifiedDate', 'size'];
 
-  constructor() { }
+  @ViewChild(MaterialTableComponent) table?: MaterialTableComponent;
+
+
+  constructor(
+    private readonly _fileHandler: FileHandlerService
+  ) { }
 
   ngOnInit(): void {
   }
 
   onUpload(file: File) {
-    console.log(file);
+    this._fileHandler.upload(file);
+    this.updateTable();
   }
 
-  onDelete(item: any) {
-    console.log(item);
+  onDelete(item: File) {
+    this._fileHandler.delete(item);
+    this.updateTable();
   }
 
+  private updateTable(): void {
+    if(this.table) {
+      this.table.update(this._fileHandler.files.value)
+    }
+  }
 }

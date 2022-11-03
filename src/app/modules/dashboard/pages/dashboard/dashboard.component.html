@@ -1,2 +1,2 @@
 <app-file-upload (upload)="onUpload($event)"></app-file-upload>
-<app-material-table (delete)="onDelete($event)"></app-material-table>
+<app-material-table [items]="dataSource" [displayedColumns]="columns" (delete)="onDelete($event)"></app-material-table>
