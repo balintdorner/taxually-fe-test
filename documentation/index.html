@@ -1,0 +1,178 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>taxually-fe-test documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">taxually-fe-test documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1 id="planning">Planning</h1>
+<p><a href="https://github.com/balintdorner/taxually-fe-test/blob/main/plan.png?raw=true">Planning</a></p>
+<h1 id="frontend-technical-test">Frontend Technical Test</h1>
+<p>This document defines a coding test focused on frontend tech skills</p>
+<p>We&#39;d like you to put togeather a small <strong>responsive</strong> app (preferably in Angular, but React is fine), that has the following features / capabilities: 				</p>
+<ul>
+<li>a login page				</li>
+<li>a page where the user can upload or delete the files (for example images or files are listed: up to you)				</li>
+<li>Please use Bootstrap or Tailwind 				</li>
+<li>Please use some state management (Rxjs, store...)				</li>
+<li>Please write unit tests</li>
+</ul>
+<p>		</p>
+<p>The <strong>specification</strong> below contains the basic elements of the application. You are free to implement as much or as little detail as you like and as a rule of thumb: <strong>don&#39;t spend more than a few hours on the test overall</strong>.</p>
+<h2 id="specification">Specification:</h2>
+<ol>
+<li>create the registration (if no user) and login (if user) page. 
+Fields:</li>
+</ol>
+<ul>
+<li>first name </li>
+<li>last name</li>
+<li>email address</li>
+<li>password (?)</li>
+</ul>
+<ol>
+<li><p>Listing page</p>
+<p>After a successful login, the user is redirected to a listing page, where the user sees the uploaded images or files listed.</p>
+</li>
+<li><p>The user should be able to <strong>upload</strong> and <strong>delete</strong> files </p>
+</li>
+<li><p>Show action status messages (after upload/delete)</p>
+</li>
+<li><p>The list should be sortable and filterable.</p>
+</li>
+</ol>
+<blockquote>
+<p>Bonus: Grouping for example using an accordion. Copy and move feature. Error handling</p>
+</blockquote>
+<p>You don&#39;t need to implement any backend state. We are only interested in your frontend knowledge.
+<em>(Tip: To store &#39;data&#39; you can use: local storage, session storage, cookies, etc..)</em></p>
+<p>We want you to present your skills and competencies in the in the way you feel reflects those best. It is not necessary to complete all tasks. It&#39;s more important that the completed tasks reflect the quality of your work. </p>
+<p>If you have other projects that would you share with us / or would be interesting for us, we are happy to look at them, but keep in mind you only need to do the given/described task. </p>
+<h2 id="criteria--what-were-looking-for">Criteria / what we&#39;re looking for:</h2>
+<ol>
+<li>planning</li>
+<li>implementation</li>
+<li>deployment (git handling, commit message quality)</li>
+<li>documentation </li>
+<li>testing</li>
+</ol>
+<p>Preferred Tech Stack:</p>
+<ul>
+<li>TypeScript</li>
+<li>Angular or React </li>
+<li>RxJS/NgRx</li>
+<li>Bootstrap/Tailwind (SCSS/PostCSS etc..)</li>
+<li>Jest</li>
+</ul>
+<p>To develop and submit your solution please follow these steps:</p>
+<ol>
+<li>Create a public repo in your own GitHub account and push the technical test there</li>
+<li>Develop your solution and push your changes to your own public GitHub repo</li>
+<li>Once you&#39;re happy with your solution send us a link to your repo</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+
+       <script src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

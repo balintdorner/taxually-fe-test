@@ -1,3 +1,11 @@
+# Version
+## 1.0
+
+# Documentation
+* Used tool: Compodoc
+* Run command: compodoc -p tsconfig.doc.json -s
+* Available at: http://127.0.0.1:8080
+
 # Planning
 [Planning](https://github.com/balintdorner/taxually-fe-test/blob/main/plan.png?raw=true)
 
