@@ -35,6 +35,13 @@ export class AuthService {
     return of(user);
   }
 
+  loginWithLocalUser(): void {
+    const user: UserModel | null = this.readFromLocalStorage(this.userLocalStorageKey);
+    if (user) {
+      this.setLoggedInUser(user);
+    }
+  }
+
   private removeRegisteredUserFromLocalStorate(): void {
     localStorage.removeItem(this.registeredUserLocalStorageKey);
   }
