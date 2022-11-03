@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { NavigationError, Router } from '@angular/router';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 
 import { UserModel } from 'src/app/shared/models/user.model';
@@ -12,7 +13,9 @@ export class AuthService {
 
   readonly loggedInUser$: BehaviorSubject<UserModel | null> = new BehaviorSubject<UserModel | null>(null);
 
-  constructor() { }
+  constructor(
+    private readonly _router: Router
+  ) { }
 
   register(user: UserModel): void {
     this.removeRegisteredUserFromLocalStorate();
@@ -42,8 +45,18 @@ export class AuthService {
     }
   }
 
+  logout(): void {
+    this.setLoggedOutUser();
+    this.removeLoggedInUserFromLocalStorate();
+    this.navigateToLogin();
+  }
+
   private removeRegisteredUserFromLocalStorate(): void {
     localStorage.removeItem(this.registeredUserLocalStorageKey);
+  }
+
+  private removeLoggedInUserFromLocalStorate(): void {
+    localStorage.removeItem(this.userLocalStorageKey);
   }
 
   private storeRegisteredInLocalStorage(user: UserModel): void {
@@ -81,6 +94,10 @@ export class AuthService {
     this.loggedInUser$.next(user);
   }
 
+  private setLoggedOutUser(): void {
+    this.loggedInUser$.next(null);
+  }
+
   private storeLoggedInUserInLocalStorage(user: UserModel): void {
     localStorage.setItem(this.userLocalStorageKey, JSON.stringify(user));
   }
@@ -93,5 +110,9 @@ export class AuthService {
     return 'email' in object;
   }
 
+  private navigateToLogin(): void {
+    this._router.navigate(['auth/login'])
+      .catch((e: NavigationError) => console.error(e));
+  }
 
 }

@@ -1,2 +1,10 @@
+<nav class="navbar navbar-dark bg-dark justify-content-between">
+    <span class="navbar-brand mb-0 h1">Taxually</span>
+    <span class="navbar-brand mb-0 h1">Hello, {{user}}!</span>
+    <a class="navbar-text" (click)="onLogout()">Logout</a>
+</nav>
+
 <app-file-upload (upload)="onUpload($event)"></app-file-upload>
-<app-material-table [items]="dataSource" [displayedColumns]="columns" (delete)="onDelete($event)"></app-material-table>
+<app-material-table [items]="dataSource"
+    [displayedColumns]="columns"
+    (delete)="onDelete($event)"></app-material-table>
